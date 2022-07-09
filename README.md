@@ -10,6 +10,6 @@ docker-compose up --build
 got to 
 POST localhost:8000/api/todo/, payload body {"name": "your name"}
 
-***with restframework ***
+***with restframework***
 got to
 POST localhost:8000/api/items/, payload body {"name": "your name"}
