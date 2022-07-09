@@ -1,0 +1,5 @@
+Django
+djangorestframework
+celery
+Redis
+psycopg2-binary

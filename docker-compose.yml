@@ -1,0 +1,53 @@
+version: "3.8"
+   
+services:
+    pgdb:
+        image: postgres
+        container_name: showcase_pgdb
+        environment:
+            - POSTGRES_DB=showcase
+            - POSTGRES_USER=showcase
+            - POSTGRES_PASSWORD=showcase
+        volumes:
+            - pgdata:/var/lib/postgresql/data/
+    django:
+        build: .
+        container_name: django
+        command: ./runserver.sh
+        volumes:
+            - .:/showcase
+        ports:
+            - "8000:8000"
+        environment:
+            - DEBUG=1
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+            - DB_USER=showcase
+            - DB_PASSWORD=showcase
+            - DB_NAME=showcase
+            - DB_PORT=5432
+        depends_on:
+            - pgdb
+            - redis
+    celery:
+        build: .
+        command: celery -A showcase worker -l INFO
+        volumes:
+            - .:/showcase
+        environment:
+            - DEBUG=1
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+        depends_on:
+            - django
+            - redis
+    
+    
+
+    redis:
+        image: "redis:alpine"
+
+volumes:
+    pgdata:
