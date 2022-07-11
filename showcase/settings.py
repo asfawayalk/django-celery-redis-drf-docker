@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'app1',
     'django_celery_results',
     'django_celery_beat',
-    'flower'
+    'flower',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,7 @@ DATABASES = {
         'PASSWORD': 'showcase',
         'HOST': 'pgdb',
     }
+
 }
 
 # Password validation

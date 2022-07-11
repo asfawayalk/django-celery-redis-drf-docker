@@ -15,5 +15,3 @@ ADD . /showcase/
 # ADD . /db.sqlite3
 ADD flower /showcase/
 
-
-CMD ["bash", "server.sh"]
