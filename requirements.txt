@@ -3,3 +3,5 @@ djangorestframework
 celery
 Redis
 psycopg2-binary
+django-celery-results
+django-celery-beat
