@@ -6,9 +6,12 @@ from rest_framework.filters import SearchFilter
 from .filter_backends import NameFilterBackend
 from .models import Item
 from rest_framework.views import APIView
-from .tasks import  create_item
+from .tasks import create_item
 from rest_framework.response import Response
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 # Create your views here.
+
 
 class ItemsViewset(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
@@ -17,9 +20,11 @@ class ItemsViewset(viewsets.ModelViewSet):
     filter_backends = [SearchFilter, NameFilterBackend]
     search_fields = ["name"]
 
+
 class CreateItemView(APIView):
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(request_body=ItemLightSerializer)
     def post(self, request):
         serializer = ItemLightSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

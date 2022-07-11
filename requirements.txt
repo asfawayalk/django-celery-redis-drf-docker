@@ -7,3 +7,5 @@ django-celery-results==2.4.0
 django-celery-beat==2.3.0
 flower==1.1.0
 drf-yasg==1.20.0
+coreapi==2.3.3
+openapi==1.1.0 
