@@ -90,7 +90,7 @@ services:
                 celery -A showcase flower --port=5555 --persistent=True;
             "
         volumes:
-        - .:/showcase
+        - flower_data:/home
         ports:
         - "5555:5555"
         depends_on:
@@ -99,3 +99,4 @@ services:
 
 volumes:
     pgdata:
+    flower_data:

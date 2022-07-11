@@ -13,5 +13,5 @@ RUN pip install --default-timeout=100 -r requirements.txt
 
 ADD . /showcase/
 # ADD . /db.sqlite3
-ADD flower /showcase/
+# ADD flower /showcase/
 
