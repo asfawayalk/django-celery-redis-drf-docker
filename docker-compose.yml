@@ -16,7 +16,7 @@ services:
         # command: ./runserver.sh
         command: >
             /bin/bash -c "
-                sleep 5;
+                sleep 7;
                 python manage.py makemigrations;
                 python manage.py migrate;
                 python manage.py runserver 0.0.0.0:8000;
@@ -40,9 +40,10 @@ services:
     celery:
         build: .
         # command: celery -A showcase worker -l INFO
+        container_name: celery
         command: >
             /bin/bash -c "
-                sleep 5;
+                sleep 7;
                 celery -A showcase worker -l INFO;
             "
         volumes:
@@ -60,15 +61,17 @@ services:
 
     redis:
         image: "redis:alpine"
+        container_name: redis
         ports:
             - "6378:6379"
 
     celery-beat:
         build: .
         # command: celery -A showcase beat -l info
+        container_name: celery-beat
         command: >
             /bin/bash -c "
-                sleep 7;
+                sleep 20;
                 celery -A showcase beat -l INFO;
             "
         volumes:
@@ -80,9 +83,10 @@ services:
     flower:
         build: .
         # command: flower -A showcase
+        container_name: flower
         command: >
             /bin/bash -c "
-                sleep 7;
+                sleep 15;
                 celery -A showcase flower --port=5555 --persistent=True;
             "
         volumes:
