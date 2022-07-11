@@ -5,5 +5,9 @@ from celery import Celery
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "showcase.settings")
 app = Celery("showcase")
 app.config_from_object("django.conf:settings", namespace='CELERY')
+
+app.conf.beat_schedule = {
+    
+}
 # app.conf.broker_url = "redis://redis:6379/0"
 app.autodiscover_tasks()
