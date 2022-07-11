@@ -13,12 +13,7 @@ RUN pip install --default-timeout=100 -r requirements.txt
 
 ADD . /showcase/
 # ADD . /db.sqlite3
-ADD start.sh /showcase/
-ADD runserver.sh /showcase/
-ADD wait-for-it.sh /showcase/
-RUN chmod 755 /showcase/start.sh
-RUN chmod 755 /showcase/runserver.sh
-RUN chmod 755 /showcase/wait-for-it.sh
+ADD flower /showcase/
 
 
 CMD ["bash", "server.sh"]
