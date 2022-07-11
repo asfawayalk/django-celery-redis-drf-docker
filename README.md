@@ -1,6 +1,25 @@
 **This project includes**
 
-Django, Djangorestframework, flower, celery, celery-beat, docker, redis, postgres, swagger
+- Djang
+
+- Django Rest Framework
+
+- Flower
+
+- Celery
+
+- Celery Beat
+
+- Docker
+
+- Docker Compose
+
+- Redis
+
+- Postgres
+
+- Swagge
+
 
 **How to run the project**
 
