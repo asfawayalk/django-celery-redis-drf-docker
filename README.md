@@ -1,6 +1,6 @@
 **This project includes**
 
-- Djang
+- Django
 
 - Django Rest Framework
 
@@ -18,7 +18,7 @@
 
 - Postgres
 
-- Swagge
+- Swagger
 
 
 **How to run the project**
