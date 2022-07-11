@@ -11,4 +11,10 @@ def create_item(name, created_by):
     print(".........................item created.......................")
     print(serialized)
     print(".........................item created.......................")
+    return "item creation done"
 
+@shared_task
+def debug_task():
+    for i in range(5):
+        print(i, "celery is working")
+    return "Done"
