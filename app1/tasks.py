@@ -3,9 +3,11 @@ from celery import shared_task
 from .models import Item
 from .serializers import ItemSerializer
 from django.contrib.auth.models import User
+import time
 
 @shared_task
 def create_item(name, created_by):
+    time.sleep(5)
     item = Item.objects.create(name=name, created_by_id=created_by)
     serialized = ItemSerializer(item).data
     print(".........................item created.......................")

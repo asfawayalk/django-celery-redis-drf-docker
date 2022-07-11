@@ -60,6 +60,8 @@ services:
 
     redis:
         image: "redis:alpine"
+        ports:
+            - "6378:6379"
 
     celery-beat:
         build: .
@@ -71,6 +73,22 @@ services:
             "
         volumes:
             - .:/showcase
+        depends_on:
+        - pgdb
+        - redis
+    
+    flower:
+        build: .
+        # command: flower -A showcase
+        command: >
+            /bin/bash -c "
+                sleep 7;
+                celery -A showcase flower --port=5555 --persistent=True;
+            "
+        volumes:
+        - .:/showcase
+        ports:
+        - "5555:5555"
         depends_on:
         - pgdb
         - redis
