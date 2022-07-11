@@ -1,3 +1,4 @@
+**Django, Djangorestframework, flower, celery, celery-beat, docker, redis, postgres**
 *How to run the project*
 
 **using docker**
